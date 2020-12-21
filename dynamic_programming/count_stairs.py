@@ -16,15 +16,17 @@
 # 1. 1 step + 1 step + 1 step
 # 2. 1 step + 2 steps
 # 3. 2 steps + 1 step
+from utils import assert_equal
 
 
-def climbStairs(n, memo={}):
+def climbStairs(n, memo=None):
+    if memo is None:
+        memo = {}
     if n in memo:
         return memo[n]
 
     if n == 0:
         return 1
-
     if n <= 0:
         return 0
 
@@ -34,5 +36,5 @@ def climbStairs(n, memo={}):
 
 
 if __name__ == "__main__":
-    assert climbStairs(5) == 8
-    assert climbStairs(45) == 1836311903
+    assert_equal(climbStairs(5), 8)
+    assert_equal(climbStairs(45), 1836311903)
