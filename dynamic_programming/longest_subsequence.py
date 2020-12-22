@@ -2,7 +2,7 @@ from utils import assert_equal
 
 
 def lis_length(numbers):
-    log = [1] * len(numbers)
+    log = [1 for idx in range(len(numbers))]
 
     for j in range(1, len(numbers)):
         for i in range(j):
