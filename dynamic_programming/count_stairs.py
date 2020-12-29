@@ -19,7 +19,21 @@
 from utils import assert_equal
 
 
-def climbStairs(n, memo=None):
+def climb_stairs_iter(n):
+    dp = [0 for _ in range(n + 1)]
+    dp[0] = 1
+
+    for i in range(len(dp)):
+        if i + 1 < len(dp):
+            dp[i + 1] += dp[i]
+
+        if i + 2 < len(dp):
+            dp[i + 2] += dp[i]
+
+    return dp[n]
+
+
+def climb_stairs_memo(n, memo=None):
     if memo is None:
         memo = {}
     if n in memo:
@@ -30,11 +44,13 @@ def climbStairs(n, memo=None):
     if n <= 0:
         return 0
 
-    memo[n] = climbStairs(n - 1, memo=memo) + climbStairs(n - 2, memo=memo)
+    memo[n] = climb_stairs_memo(n - 1, memo=memo) + climb_stairs_memo(n - 2, memo=memo)
 
     return memo[n]
 
 
 if __name__ == "__main__":
-    assert_equal(climbStairs(5), 8)
-    assert_equal(climbStairs(45), 1836311903)
+    assert_equal(climb_stairs_memo(5), 8)
+    assert_equal(climb_stairs_memo(45), 1836311903)
+    assert_equal(climb_stairs_iter(5), 8)
+    assert_equal(climb_stairs_iter(45), 1836311903)
