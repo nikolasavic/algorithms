@@ -34,6 +34,16 @@ def lis(numbers):
     return seq
 
 
+def lcs_length(alpha, beta):
+    if alpha is "" or beta is "":
+        return 0
+
+    if alpha[-1] is beta[-1]:
+        return 1 + lcs_length(alpha[:-1], beta[:-1])
+    else:
+        return max(lcs_length(alpha[:-1], beta), lcs_length(alpha, beta[:-1]))
+
+
 def run_lis_length():
     assert_equal(lis_length([10, 9, 2, 5, 3, 7, 19, 18]), 4)
 
@@ -70,5 +80,11 @@ def run_lis():
     assert_equal(lis([50, 3, 10, 7, 40, 80]), [3, 10, 40, 80])
 
 
+def run_lcs_length():
+    assert_equal(lcs_length("aza", "aaa"), 2)
+
+    assert_equal(lcs_length("abcdefgh", "xxbxdxexhxx"), 4)
+
+
 if __name__ == "__main__":
-    run_lis()
+    run_lcs_length()
