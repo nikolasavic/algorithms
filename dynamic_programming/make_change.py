@@ -142,7 +142,7 @@ def run_has_sum():
     assert_equal(has_make_change_memo(13, [3, 5, 7]), [7, 3, 3])
     assert_equal(has_make_change_memo(7, [2, 4]), None)
     assert_equal(has_make_change_memo(300, [7, 14]), None)
-    assert_equal(has_make_change_memo(100, [1, 10, 15, 25, 20, 5]), [1 for _ in range(100)])
+    assert_equal(has_make_change_memo(100, [1, 10, 15, 25, 20, 5]), [1] * 100)
     assert_equal(has_make_change_memo(8, [1, 4, 5]), [1, 1, 1, 1, 1, 1, 1, 1])
 
 
