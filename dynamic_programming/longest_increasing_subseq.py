@@ -72,4 +72,5 @@ def run_lcs_length():
 
 if __name__ == "__main__":
     run_lis()
+    run_lis_length()
     run_lcs_length()
