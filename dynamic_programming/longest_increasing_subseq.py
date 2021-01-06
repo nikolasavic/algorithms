@@ -2,31 +2,32 @@ from utils import assert_equal
 
 
 def lis_length(numbers):
-    log = [1 for _ in range(len(numbers))]
+    dp = [1 for _ in range(len(numbers))]
 
-    for j in range(1, len(numbers)):
-        for i in range(j):
-            if numbers[i] < numbers[j]:
-                if log[j] < log[i] + 1:
-                    log[j] = log[i] + 1
+    for i in range(len(numbers)):
+        for j in range(i):
+            if numbers[j] < numbers[i]:
+                if dp[i] < dp[j] + 1:
+                    dp[i] = dp[j] + 1
 
-    return max(log)
+    return max(dp)
 
 
 def lis(numbers):
-    log = [1 for _ in range(len(numbers))]
+    dp = [1 for _ in range(len(numbers))]
     prevs = [None for _ in range(len(numbers))]
 
-    for j in range(1, len(numbers)):
-        for i in range(j):
-            if numbers[i] < numbers[j]:
-                if log[j] < log[i] + 1:
-                    log[j] = log[i] + 1
-                    prevs[j] = i
+    for i in range(len(dp)):
+        for j in range(i):
+            if numbers[j] < numbers[i]:
+                if dp[i] < dp[j] + 1:
+                    dp[i] = dp[j] + 1
+                    prevs[i] = j
 
-    max_ind = log.index(max(log))
+    max_ind = dp.index(max(dp))
     seq = [numbers[max_ind]]
     prev = prevs[max_ind]
+
     while prev is not None:
         seq.insert(0, numbers[prev])
         prev = prevs[prev]
