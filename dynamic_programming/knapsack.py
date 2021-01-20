@@ -11,10 +11,7 @@ def knapsack(W, values, weights):
             if weight <= w:
                 use = dp[i - 1][w - weight] + value
                 dont_use = dp[i - 1][w]
-                dp[i][w] = max(
-                    use,
-                    dont_use
-                )
+                dp[i][w] = max(use, dont_use)
             else:
                 dp[i][w] = dp[i - 1][w]
 
@@ -30,5 +27,5 @@ def run_knapsack():
     assert_equal(knapsack(60, [100, 280, 120], [10, 40, 20]), 400)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     run_knapsack()
