@@ -28,5 +28,5 @@ def run_lps():
     assert_equal(lps("yracecarxx"), 7)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     run_lps()
