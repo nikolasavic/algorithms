@@ -2,9 +2,10 @@ from utils import assert_equal
 
 
 def lis(numbers):
-    dp = [1 for _ in range(len(numbers))]
+    n = len(numbers)
+    dp = [1 for _ in range(n)]
 
-    for i in range(len(numbers)):
+    for i in range(n):
         for j in range(i):
             if numbers[j] < numbers[i]:
                 if dp[i] < dp[j] + 1:
