@@ -6,7 +6,7 @@ def total_3_chains(arr):
     dp = [0 for _ in range(n)]
     dp[0] = 1
 
-    for i in range(n):
+    for i in range(1, n):
         for j in range(i):
             if abs(arr[i] - arr[j]) <= 3:
                 dp[i] += dp[j]
