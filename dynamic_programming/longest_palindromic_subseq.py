@@ -3,20 +3,20 @@ from utils import assert_equal
 
 def lps(string):
     n = len(string)
-    dp = [[0 for _ in range(n)] for _ in range(n)]
+    T = [[0 for _ in range(n)] for _ in range(n)]
 
     for x in range(n):
-        dp[x][x] = 1
+        T[x][x] = 1
 
     for seq_len in range(2, n + 1):
         for i in range(n - seq_len + 1):
             j = i + seq_len - 1
             if string[i] == string[j]:
-                dp[i][j] = 2 + dp[i + 1][j - 1]
+                T[i][j] = 2 + T[i + 1][j - 1]
             else:
-                dp[i][j] = max(dp[i + 1][j], dp[i][j - 1])
+                T[i][j] = max(T[i + 1][j], T[i][j - 1])
 
-    return dp[0][n - 1]
+    return T[0][n - 1]
 
 
 def run_lps():

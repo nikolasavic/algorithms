@@ -2,20 +2,20 @@ from utils import assert_equal
 
 
 def knapsack(W, values, weights):
-    dp = [[0 for _ in range(W + 1)] for _ in range(len(weights) + 1)]
+    T = [[0 for _ in range(W + 1)] for _ in range(len(weights) + 1)]
 
-    for i in range(1, len(dp)):
-        for w in range(1, len(dp[0])):
+    for i in range(1, len(T)):
+        for w in range(1, len(T[0])):
             value = values[i - 1]
             weight = weights[i - 1]
             if weight <= w:
-                use = dp[i - 1][w - weight] + value
-                dont_use = dp[i - 1][w]
-                dp[i][w] = max(use, dont_use)
+                use = T[i - 1][w - weight] + value
+                dont_use = T[i - 1][w]
+                T[i][w] = max(use, dont_use)
             else:
-                dp[i][w] = dp[i - 1][w]
+                T[i][w] = T[i - 1][w]
 
-    return dp[-1][-1]
+    return T[-1][-1]
 
 
 def run_knapsack():

@@ -3,15 +3,15 @@ from utils import assert_equal
 
 def lis(numbers):
     n = len(numbers)
-    dp = [1 for _ in range(n)]
+    T = [1 for _ in range(n)]
 
     for i in range(n):
         for j in range(i):
             if numbers[j] < numbers[i]:
-                if dp[i] < dp[j] + 1:
-                    dp[i] = dp[j] + 1
+                if T[i] < T[j] + 1:
+                    T[i] = T[j] + 1
 
-    return max(dp)
+    return max(T)
 
 
 def run_lis():

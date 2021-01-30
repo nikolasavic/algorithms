@@ -2,31 +2,31 @@ from utils import assert_equal
 
 
 def can_make_change(target, coins):
-    dp = [False for _ in range(target + 1)]
-    dp[0] = True
+    T = [False for _ in range(target + 1)]
+    T[0] = True
 
-    for i in range(len(dp)):
-        if dp[i] is True:
+    for i in range(len(T)):
+        if T[i] is True:
             for c in coins:
-                if i + c < len(dp):
-                    dp[i + c] = True
+                if i + c < len(T):
+                    T[i + c] = True
 
-    return dp[target]
+    return T[target]
 
 
 def best_make_change(target, coins):
-    dp = [None for _ in range(target + 1)]
-    dp[0] = []
+    T = [None for _ in range(target + 1)]
+    T[0] = []
 
-    for i in range(len(dp)):
-        if dp[i] is not None:
+    for i in range(len(T)):
+        if T[i] is not None:
             for c in coins:
-                if i + c < len(dp):
-                    attempt = [*dp[i], c]
-                    if dp[i + c] is None or len(attempt) < len(dp[i + c]):
-                        dp[i + c] = attempt
+                if i + c < len(T):
+                    attempt = [*T[i], c]
+                    if T[i + c] is None or len(attempt) < len(T[i + c]):
+                        T[i + c] = attempt
 
-    return dp[target]
+    return T[target]
 
 
 def run_can_sum():

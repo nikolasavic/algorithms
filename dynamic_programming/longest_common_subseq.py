@@ -2,16 +2,16 @@ from utils import assert_equal
 
 
 def lcs(alpha, beta):
-    dp = [[0 for _ in range(len(beta) + 1)] for _ in range(len(alpha) + 1)]
+    T = [[0 for _ in range(len(beta) + 1)] for _ in range(len(alpha) + 1)]
 
     for a in range(1, len(alpha) + 1):
         for b in range(1, len(beta) + 1):
             if alpha[a - 1] == beta[b - 1]:
-                dp[a][b] = 1 + dp[a - 1][b - 1]
+                T[a][b] = 1 + T[a - 1][b - 1]
             else:
-                dp[a][b] = max(dp[a - 1][b], dp[a][b - 1])
+                T[a][b] = max(T[a - 1][b], T[a][b - 1])
 
-    return dp[-1][-1]
+    return T[-1][-1]
 
 
 def run_lcs():
