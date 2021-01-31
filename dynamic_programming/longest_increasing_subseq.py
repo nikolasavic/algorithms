@@ -3,11 +3,11 @@ from utils import assert_equal
 
 def lis(numbers):
     n = len(numbers)
-    T = [1 for _ in range(n)]
+    T = [1 for _ in range(n + 1)]
 
-    for i in range(n):
-        for j in range(i):
-            if numbers[j] < numbers[i]:
+    for i in range(1, n + 1):
+        for j in range(1, i):
+            if numbers[j - 1] < numbers[i - 1]:  # Not 1-based index
                 if T[i] < T[j] + 1:
                     T[i] = T[j] + 1
 

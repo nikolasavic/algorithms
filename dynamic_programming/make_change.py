@@ -5,11 +5,10 @@ def can_make_change(target, coins):
     T = [False for _ in range(target + 1)]
     T[0] = True
 
-    for i in range(len(T)):
-        if T[i] is True:
-            for c in coins:
-                if i + c < len(T):
-                    T[i + c] = True
+    for i in range(1, target + 1):
+        for c in coins:
+            if c <= target:
+                T[i] = T[i] or T[i - c]
 
     return T[target]
 

@@ -4,9 +4,9 @@ from utils import assert_equal
 def knapsack(W, values, weights):
     T = [[0 for _ in range(W + 1)] for _ in range(len(weights) + 1)]
 
-    for i in range(1, len(T)):
-        for w in range(1, len(T[0])):
-            value = values[i - 1]
+    for i in range(1, len(values) + 1):
+        for w in range(1, W + 1):
+            value = values[i - 1]  # Not 1-based index
             weight = weights[i - 1]
             if weight <= w:
                 use = T[i - 1][w - weight] + value

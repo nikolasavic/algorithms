@@ -6,7 +6,7 @@ def lcs(alpha, beta):
 
     for a in range(1, len(alpha) + 1):
         for b in range(1, len(beta) + 1):
-            if alpha[a - 1] == beta[b - 1]:
+            if alpha[a - 1] == beta[b - 1]:  # Not 1-based index
                 T[a][b] = 1 + T[a - 1][b - 1]
             else:
                 T[a][b] = max(T[a - 1][b], T[a][b - 1])
