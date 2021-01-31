@@ -14,7 +14,16 @@ def can_make_change(target, coins):
 
 
 def can_make_change_k_coins(target, coins, k):
-    pass
+    T = [float("inf") for _ in range(target + 1)]
+    T[0] = 0
+
+    for i in range(1, target + 1):
+        for c in coins:
+            if c <= i:
+                if T[i] > T[i - c] + 1:
+                    T[i] = T[i - c] + 1
+
+    return T[target] <= k
 
 
 def best_make_change(target, coins):
@@ -54,7 +63,12 @@ def run_best_make_change():
 
 
 def run_can_make_change_k_coins():
-    pass
+    assert_equal(can_make_change_k_coins(1, [1], 1), True)
+    assert_equal(can_make_change_k_coins(10, [5], 1), False)
+    assert_equal(can_make_change_k_coins(8, [3, 5], 1), False)
+    assert_equal(can_make_change_k_coins(8, [3, 5], 2), True)
+    assert_equal(can_make_change_k_coins(55, [5, 10], 6), True)
+    assert_equal(can_make_change_k_coins(65, [5, 10], 6), False)
 
 
 if __name__ == "__main__":
